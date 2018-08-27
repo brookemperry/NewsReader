@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">News Reader</string>
+    <string name="sample_article_title">Sample article title</string>
+    <string name="sample_author_name">Sample author name</string>
+    <string name="sample_snippet">Sample article snippet. This text should be long enough to wrap to next line.</string>
+    <string name="sample_section_name">section</string>
+    <string name="sample_date">date</string>
+</resources>
