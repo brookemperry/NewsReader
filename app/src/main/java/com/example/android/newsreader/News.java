@@ -14,9 +14,6 @@ public class News {
     //Author of the article
     private String mAuthor;
 
-    //Article snippet
-    private String mSnippet;
-
     //Section article comes from
     private String mSection;
 
@@ -24,19 +21,17 @@ public class News {
     private String mDate;
 
     //Create a News object without author
-    public News(String title, String snippet, String section, String date, String url){
+    public News(String title, String section, String date, String url) {
         mTitle = title;
-        mSnippet = snippet;
         mSection = section;
         mDate = date;
         mUrl = url;
     }
 
     //Create a News object with author
-    public News(String title, String author, String snippet, String section, String date, String url){
+    public News(String title, String author, String section, String date, String url) {
         mTitle = title;
         mAuthor = author;
-        mSnippet = snippet;
         mSection = section;
         mDate = date;
         mUrl = url;
@@ -48,9 +43,7 @@ public class News {
     public String getAuthor(){
         return mAuthor;
     }
-    public String getSnippet(){
-        return mSnippet;
-    }
+
     public String getSection(){
         return mSection;
     }
