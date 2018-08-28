@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private NewsAdapter mAdapter;
 
     /**
-     * URL for earthquake data from the USGS dataset
+     * URL for data from the Guardian API
      */
     private static final String GUARDIAN_REQUEST_URL =
             "https://content.guardianapis.com/search?api-key=37853a53-9dac-4ecb-b48f-cda8d2f1e526";

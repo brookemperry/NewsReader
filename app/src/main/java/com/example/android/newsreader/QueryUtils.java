@@ -146,7 +146,7 @@ public class QueryUtils {
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
-
+            Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
         // Extract relevant fields from the JSON response and create an {@link News} object

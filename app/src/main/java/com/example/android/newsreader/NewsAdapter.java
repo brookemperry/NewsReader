@@ -30,8 +30,8 @@ public class NewsAdapter extends ArrayAdapter {
         News currentNews = (News) getItem(position);
 
         String originalTitle = currentNews.getTitle();
-        String title = null;
-        String author = null;
+        String title;
+        String author;
 
         if (originalTitle.contains(TITLE_SEPARATOR)) {
             String[] parts = originalTitle.split(TITLE_SEPARATOR);
