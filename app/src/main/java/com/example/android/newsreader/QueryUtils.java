@@ -116,15 +116,16 @@ public class QueryUtils {
             for (int i = 0; i < articleArray.length(); i++) {
                 // Get a single earthquake at position i within the list of earthquakes
                 JSONObject currentNews = articleArray.getJSONObject(i);
+
 //todo should this be JSONArray?
-                JSONObject results = currentNews.getJSONObject("results");
+                JSONArray results = currentNews.getJSONArray("results");
 
 
                 // Extract out the title, section date and url values
-                String title = results.getString("webTitle");
-                String section = results.getString("sectionName");
-                String date = results.getString("webPublicationDate");
-                String url = results.getString("webUrl");
+                String title = results.getString(Integer.parseInt("webTitle"));
+                String section = results.getString(Integer.parseInt("sectionName"));
+                String date = results.getString(Integer.parseInt("webPublicationDate"));
+                String url = results.getString(Integer.parseInt("webUrl"));
 
                 // Create a new {@link News} object with title, section, date & url
                 News article = new News(title, section, date, url);

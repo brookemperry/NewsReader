@@ -1,9 +1,7 @@
 package com.example.android.newsreader;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,18 +35,24 @@ public class NewsAdapter extends ArrayAdapter {
             String[] parts = originalTitle.split(TITLE_SEPARATOR);
             title = parts[0];
             author = parts[1];
+        } else {
+            title = originalTitle;
+            author = null;
         }
         //time is stored here in case app is changed to include time in the future. It is not currently used.
         String originalDate = currentNews.getDate();
-        String date = null;
+        String date;
         String time;
-        String section = null;
 
         if (originalDate.contains(DATE_SEPARATOR)) {
             String[] parts = originalDate.split(DATE_SEPARATOR);
             date = parts[0];
             time = parts[1];
+        } else {
+            date = originalDate;
+            time = null;
         }
+        String section = currentNews.getSection();
 
         //Check if view is being reused, otherwise inflate
         View listItemView = convertView;
