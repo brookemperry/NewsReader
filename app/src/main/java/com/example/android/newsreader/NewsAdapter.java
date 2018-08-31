@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class NewsAdapter extends ArrayAdapter {
 
-    private static final String TITLE_SEPARATOR = String.valueOf((R.string.title_separator));
-    private static final String DATE_SEPARATOR = String.valueOf((R.string.date_separator));
+    private static final String TITLE_SEPARATOR = "|";
+    private static final String DATE_SEPARATOR = "T";
 
 
     public NewsAdapter(@NonNull MainActivity context, ArrayList<News> articles) {

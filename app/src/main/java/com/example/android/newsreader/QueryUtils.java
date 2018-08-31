@@ -61,7 +61,7 @@ public class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the news JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -112,24 +112,24 @@ public class QueryUtils {
             //Extract JSONArray associated with key called "results"
             JSONArray articleArray = baseJsonResponse.getJSONArray("results");
 
-            //For each earthquake in the array create a Quake object
+            //For each article in the array create a News object
             for (int i = 0; i < articleArray.length(); i++) {
-                // Get a single earthquake at position i within the list of earthquakes
-                JSONObject currentNews = articleArray.getJSONObject(i);
+                // Get a single article at position i within the list
+                JSONObject currentArticle = articleArray.getJSONObject(i);
 
-//todo should this be JSONArray?
-                JSONArray results = currentNews.getJSONArray("results");
+
+                JSONObject results = currentArticle.getJSONObject("results");
 
 
                 // Extract out the title, section date and url values
-                String title = results.getString(Integer.parseInt("webTitle"));
-                String section = results.getString(Integer.parseInt("sectionName"));
-                String date = results.getString(Integer.parseInt("webPublicationDate"));
-                String url = results.getString(Integer.parseInt("webUrl"));
+                String title = results.getString("webTitle");
+                String section = results.getString("sectionName");
+                String date = results.getString("webPublicationDate");
+                String url = results.getString("webUrl");
 
                 // Create a new {@link News} object with title, section, date & url
                 News article = new News(title, section, date, url);
-                //Add the new Quake to the list of Quakes
+                //Add the new article to the list of articles
                 articles.add(article);
             }
         } catch (JSONException e) {

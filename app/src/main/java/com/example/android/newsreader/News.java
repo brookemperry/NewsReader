@@ -10,7 +10,7 @@ public class News {
     //Title of the article
     private String mTitle;
 
-    //TODO make two constructors--one with author & one without
+
     //Author of the article
     private String mAuthor;
 
