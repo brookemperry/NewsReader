@@ -110,7 +110,7 @@ public class QueryUtils {
             //Extract JSONObject associated with key called "response"
             JSONObject articleObject = baseJsonResponse.getJSONObject("response");
             //Extract JSONArray associated with key called "results"
-            JSONArray articleArray = baseJsonResponse.getJSONArray("results");
+            JSONArray articleArray = articleObject.getJSONArray("results");
 
             //For each article in the array create a News object
             for (int i = 0; i < articleArray.length(); i++) {
@@ -118,14 +118,11 @@ public class QueryUtils {
                 JSONObject currentArticle = articleArray.getJSONObject(i);
 
 
-                JSONObject results = currentArticle.getJSONObject("results");
-
-
                 // Extract out the title, section date and url values
-                String title = results.getString("webTitle");
-                String section = results.getString("sectionName");
-                String date = results.getString("webPublicationDate");
-                String url = results.getString("webUrl");
+                String title = articleObject.getString("webTitle");
+                String section = articleObject.getString("sectionName");
+                String date = articleObject.getString("webPublicationDate");
+                String url = articleObject.getString("webUrl");
 
                 // Create a new {@link News} object with title, section, date & url
                 News article = new News(title, section, date, url);
