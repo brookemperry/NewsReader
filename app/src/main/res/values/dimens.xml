@@ -2,4 +2,6 @@
 <resources>
     <dimen name="spacing_around_card">8dp</dimen>
     <dimen name="margin_in_card">8dp</dimen>
+    <dimen name="title_font">20sp</dimen>
+    <dimen name="secondary_font">14sp</dimen>
 </resources>

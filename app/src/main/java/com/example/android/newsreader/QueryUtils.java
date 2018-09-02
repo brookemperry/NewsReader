@@ -119,10 +119,10 @@ public class QueryUtils {
 
 
                 // Extract out the title, section date and url values
-                String title = articleObject.getString("webTitle");
-                String section = articleObject.getString("sectionName");
-                String date = articleObject.getString("webPublicationDate");
-                String url = articleObject.getString("webUrl");
+                String title = currentArticle.getString("webTitle");
+                String section = currentArticle.getString("sectionName");
+                String date = currentArticle.getString("webPublicationDate");
+                String url = currentArticle.getString("webUrl");
 
                 // Create a new {@link News} object with title, section, date & url
                 News article = new News(title, section, date, url);

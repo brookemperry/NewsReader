@@ -7,6 +7,4 @@
     <string name="sample_date">date</string>
     <string name="no_articles">No articles found.</string>
     <string name="no_connection">No internet connection</string>
-    <string name="date_separator">T</string>
-    <string name="title_separator">|</string>
 </resources>
