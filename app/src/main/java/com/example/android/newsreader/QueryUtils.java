@@ -138,7 +138,7 @@ public class QueryUtils {
                 }
 
                 // Create a new {@link News} object with title, section, date & url
-                News article = new News(title, section, date, url);
+                News article = new News(title, author, section, date, url);
                 //Add the new article to the list of articles
                 articles.add(article);
             }
