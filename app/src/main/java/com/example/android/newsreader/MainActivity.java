@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
      * URL for data from the Guardian API
      */
     private static final String GUARDIAN_REQUEST_URL =
-            "https://content.guardianapis.com/search?api-key=37853a53-9dac-4ecb-b48f-cda8d2f1e526";
+            "https://content.guardianapis.com/search?order-by=newest&show-tags=contributor&q=Politics&api-key=37853a53-9dac-4ecb-b48f-cda8d2f1e526";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.

@@ -27,18 +27,10 @@ public class NewsAdapter extends ArrayAdapter {
         //Get the News item at this position  the list
         News currentNews = (News) getItem(position);
 
-        String originalTitle = currentNews.getTitle();
-        String title;
-        String author;
+        String title = currentNews.getTitle();
+        String author = currentNews.getAuthor();
 
-        if (originalTitle.contains(TITLE_SEPARATOR)) {
-            String[] parts = originalTitle.split(TITLE_SEPARATOR);
-            title = parts[0];
-            author = parts[1];
-        } else {
-            title = originalTitle;
-            author = null;
-        }
+
         //time is stored here in case app is changed to include time in the future. It is not currently used.
         String originalDate = currentNews.getDate();
         String date;

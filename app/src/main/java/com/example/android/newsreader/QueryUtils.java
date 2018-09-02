@@ -124,6 +124,19 @@ public class QueryUtils {
                 String date = currentArticle.getString("webPublicationDate");
                 String url = currentArticle.getString("webUrl");
 
+                //Check and see if the author is listed (key is "contributor"
+                //If so, extract the author's name
+                JSONArray tags = currentArticle.getJSONArray("tags");
+                String author = "";
+                if (tags.length() == 0) {
+                    author = null;
+                } else {
+                    for (int j = 0; j < tags.length(); j++) {
+                        JSONObject currentAuthor = tags.getJSONObject(j);
+                        author = currentAuthor.getString("webTitle");
+                    }
+                }
+
                 // Create a new {@link News} object with title, section, date & url
                 News article = new News(title, section, date, url);
                 //Add the new article to the list of articles
