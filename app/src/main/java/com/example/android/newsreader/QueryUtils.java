@@ -28,11 +28,9 @@ public class QueryUtils {
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
-
         }
         return url;
     }
-
 
     // Make an HTTP request to the given URL and return a String as the response.
     private static String makeHttpRequest(URL url) throws IOException {
@@ -73,10 +71,8 @@ public class QueryUtils {
         return jsonResponse;
     }
 
-    /**
-     * Convert the {@link InputStream} into a String which contains the
-     * whole JSON response from the server.
-     */
+    //Convert the {@link InputStream} into a String which contains the
+    // whole JSON response from the server
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -91,7 +87,6 @@ public class QueryUtils {
         return output.toString();
     }
 
-
     //Return an {@link List<News>} object
     private static List<News> extractFeatureFromJson(String newsJSON) {
         // If the JSON string is empty or null, then return early.
@@ -103,8 +98,6 @@ public class QueryUtils {
 
         //Try to parse the JSON response string. If there is a problem an exception will be thrown
         //Catch the JSON exception so the app doesn't crash
-
-
         try {
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
             //Extract JSONObject associated with key called "response"
@@ -116,7 +109,6 @@ public class QueryUtils {
             for (int i = 0; i < articleArray.length(); i++) {
                 // Get a single article at position i within the list
                 JSONObject currentArticle = articleArray.getJSONObject(i);
-
 
                 // Extract out the title, section date and url values
                 String title = currentArticle.getString("webTitle");
@@ -167,4 +159,3 @@ public class QueryUtils {
         return articles;
     }
 }
-

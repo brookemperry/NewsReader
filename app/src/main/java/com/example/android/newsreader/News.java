@@ -1,7 +1,5 @@
 package com.example.android.newsreader;
 
-import android.support.v7.widget.RecyclerView;
-
 public class News {
 
     //website Url for the article
@@ -9,7 +7,6 @@ public class News {
 
     //Title of the article
     private String mTitle;
-
 
     //Author of the article
     private String mAuthor;
@@ -50,6 +47,7 @@ public class News {
     public String getDate(){
         return mDate;
     }
+
     public String getUrl(){
         return mUrl;
     }

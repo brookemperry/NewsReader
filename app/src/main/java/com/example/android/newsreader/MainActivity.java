@@ -22,30 +22,22 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
 
-
     //ProgressBar view
     private ProgressBar mProgressBar;
 
     //TextView shown when list is empty
     private TextView mEmptyStateTextView;
 
-    /**
-     * Adapter for the list of earthquakes
-     */
+    //Adapter for the list of earthquakes
     private NewsAdapter mAdapter;
 
-    /**
-     * URL for data from the Guardian API
-     */
+    // URL for data from the Guardian API
+
     private static final String GUARDIAN_REQUEST_URL =
             "https://content.guardianapis.com/search?order-by=newest&show-tags=contributor&q=Politics&api-key=37853a53-9dac-4ecb-b48f-cda8d2f1e526";
 
-    /**
-     * Constant value for the news loader ID. We can choose any integer.
-     * This really only comes into play if you're using multiple loaders.
-     */
+    // Constant value for the news loader ID.
     private static final int NEWS_LOADER_ID = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         newsListView.setEmptyView(mEmptyStateTextView);
 
         mProgressBar = findViewById(R.id.loading_spinner);
-
 
         // Create a new adapter that takes an empty list of articles as input
         mAdapter = new NewsAdapter(this, new ArrayList<News>());
@@ -86,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -94,8 +84,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             LoaderManager loaderManager = getLoaderManager();
 
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-            // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-            // because this activity implements the LoaderCallbacks interface).
+            // the bundle. Pass in this activity for the LoaderCallbacks parameter
             loaderManager.initLoader(NEWS_LOADER_ID, null, this);
         } else {
             mProgressBar.setVisibility(View.GONE);
@@ -104,19 +93,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
     }
 
-    // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-    // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-    // because this activity implements the LoaderCallbacks interface).
-
-
     @Override
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
         return new NewsLoader(this, GUARDIAN_REQUEST_URL);
-
-
     }
-
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> articles) {
@@ -133,13 +114,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);
         }
-
     }
 
     @Override
     public void onLoaderReset(Loader<List<News>> loader) {
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
-
     }
 }

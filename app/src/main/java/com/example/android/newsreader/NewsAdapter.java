@@ -13,9 +13,7 @@ import java.util.ArrayList;
 
 public class NewsAdapter extends ArrayAdapter {
 
-    private static final String TITLE_SEPARATOR = "|";
     private static final String DATE_SEPARATOR = "T";
-
 
     public NewsAdapter(@NonNull MainActivity context, ArrayList<News> articles) {
         super(context, 0, articles);
@@ -29,13 +27,11 @@ public class NewsAdapter extends ArrayAdapter {
 
         String title = currentNews.getTitle();
         String author = currentNews.getAuthor();
-
-
         //time is stored here in case app is changed to include time in the future. It is not currently used.
         String originalDate = currentNews.getDate();
         String date;
         String time;
-
+        //Split the time from the string containing the date & time
         if (originalDate.contains(DATE_SEPARATOR)) {
             String[] parts = originalDate.split(DATE_SEPARATOR);
             date = parts[0];
@@ -66,6 +62,5 @@ public class NewsAdapter extends ArrayAdapter {
         dateTextView.setText(date);
 
         return listItemView;
-
     }
 }
