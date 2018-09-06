@@ -93,7 +93,7 @@ public class QueryUtils {
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
         }
-        //Create an empty ArryList that we can add earthquakes to
+        //Create an empty ArryList that we can add articles to
         List<News> articles = new ArrayList<>();
 
         //Try to parse the JSON response string. If there is a problem an exception will be thrown

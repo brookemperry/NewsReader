@@ -7,4 +7,9 @@
     <string name="sample_date">date</string>
     <string name="no_articles">No articles found.</string>
     <string name="no_connection">No internet connection</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">Article Settings</string>
+    <string name="settings_max_articles_label">Maximum # of Articles</string>
+    <string name="settings_max_articles_key" translatable="false">max articlese</string>
+    <string name="settings_max_articles_default" translatable="false">0</string>
 </resources>
