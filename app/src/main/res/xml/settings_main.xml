@@ -3,9 +3,15 @@
 
     <EditTextPreference
         android:defaultValue="@string/settings_max_articles_default"
-        android:inputType="numberDecimal"
+        android:inputType="number"
         android:key="@string/settings_max_articles_key"
         android:selectAllOnFocus="true"
         android:title="@string/settings_max_articles_label" />
 
+    <EditTextPreference
+        android:defaultValue="@string/settings_keyword_default"
+        android:inputType="textNoSuggestions"
+        android:key="@string/settings_keyword_key"
+        android:selectAllOnFocus="true"
+        android:title="@string/settings_keyword_label" />
 </PreferenceScreen>

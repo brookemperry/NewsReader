@@ -111,6 +111,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 getString(R.string.settings_max_articles_key),
                 getString(R.string.settings_max_articles_default));
 
+        String keyword = sharedPrefs.getString(
+                getString(R.string.settings_keyword_key),
+                getString(R.string.settings_keyword_default));
+
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
 
@@ -118,10 +122,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         // Append query parameter and its value.
+        uriBuilder.appendQueryParameter("q", keyword);
         uriBuilder.appendQueryParameter("order-by", "newest");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("limit", maxArticles);
-        uriBuilder.appendQueryParameter("key", GUARDIAN_KEY);
+        uriBuilder.appendQueryParameter("page-size", maxArticles);
+        uriBuilder.appendQueryParameter("api-key", GUARDIAN_KEY);
 
 
         // Return the completed uri
@@ -131,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> articles) {
-        //Set the epty state text to show "No articles found"
+        //Set the empty state text to show "No articles found message"
         mEmptyStateTextView.setText(R.string.no_articles);
 
         //set visibility of progress bar to gone
