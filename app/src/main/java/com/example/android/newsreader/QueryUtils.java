@@ -116,7 +116,7 @@ public class QueryUtils {
                 String date = currentArticle.getString("webPublicationDate");
                 String url = currentArticle.getString("webUrl");
 
-                //Check and see if the author is listed (key is "contributor"
+                //Check and see if the author is listed (key is "contributor")
                 //If so, extract the author's name
                 JSONArray tags = currentArticle.getJSONArray("tags");
                 String author = "";
@@ -154,7 +154,6 @@ public class QueryUtils {
 
         // Extract relevant fields from the JSON response and create an {@link News} object
         List<News> articles = extractFeatureFromJson(jsonResponse);
-
 
         return articles;
     }

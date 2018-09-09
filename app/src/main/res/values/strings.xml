@@ -15,4 +15,12 @@
     <string name="settings_keyword_label">Search keyword</string>
     <string name="settings_keyword_key" translatable="false">keyword</string>
     <string name="settings_keyword_default" translatable="false"> </string>
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order-by</string>
+    <string name="settings_order_by_default" translatable="false">newest</string>
+    <string name="settings_order_by_newest_label">Newest</string>
+    <string name="settings_order_by_newest_value" translatable="false">newest</string>
+    <string name="settings_order_by_relevance_label">Relevance</string>
+    <string name="settings_order_by_relevance_value" translatable="false">relevance</string>
+
 </resources>

@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private static final String GUARDIAN_KEY = "37853a53-9dac-4ecb-b48f-cda8d2f1e526";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,13 +69,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                //Find the current quake being cliked on
+                //Find the current article being cliked on
                 News currentNews = (News) mAdapter.getItem(position);
 
                 //convert the string url to a URI object to pass into the Intent constructor
                 Uri newsUri = Uri.parse(currentNews.getUrl());
 
-                //Create an intent to view the earthquake URI
+                //Create an intent to view the news URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
 
                 //Send the intent to launch a new activity
@@ -115,6 +113,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 getString(R.string.settings_keyword_key),
                 getString(R.string.settings_keyword_default));
 
+        String orderBy = sharedPrefs.getString(
+                getString(R.string.settings_order_by_key),
+                getString(R.string.settings_order_by_default)
+        );
+
         // parse breaks apart the URI string that's passed into its parameter
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
 
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Append query parameter and its value.
         uriBuilder.appendQueryParameter("q", keyword);
-        uriBuilder.appendQueryParameter("order-by", "newest");
+        uriBuilder.appendQueryParameter("order-by", orderBy);
         uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("page-size", maxArticles);
         uriBuilder.appendQueryParameter("api-key", GUARDIAN_KEY);
@@ -131,18 +134,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // Return the completed uri
         return new NewsLoader(this, uriBuilder.toString());
-
     }
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> articles) {
-        //Set the empty state text to show "No articles found message"
+        //Set the empty state text to show "No articles found" message.
         mEmptyStateTextView.setText(R.string.no_articles);
 
         //set visibility of progress bar to gone
         mProgressBar.setVisibility(View.GONE);
 
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous data
         mAdapter.clear();
         // If there is a valid list of articles then add them to the adapter's
         // data set. This will trigger the ListView to update.
@@ -175,5 +177,4 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
